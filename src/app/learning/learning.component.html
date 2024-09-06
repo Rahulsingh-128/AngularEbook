@@ -1,0 +1,24 @@
+<p>{{companyName}}</p>
+<h3>{{baseLocation}}</h3>
+<article>
+<div>
+  <label for="bl">base location </label>
+  <input type="text" [(ngModel)]="baseLocation" id="bl" />
+</div>
+
+<div>
+  <h2>Event Binding</h2>
+  <input type="checkbox" [(ngModel)]="checkStatus" id="showp" />
+  <label for="showp">show password</label>
+  <div>
+    
+    {{checkStatus}}
+  </div>
+</div>
+
+<div>
+  <h2>Attribute Binding</h2>
+  <input [type]="inputType" id="password" />
+  <label for="password">Enter password:</label>
+</div>
+</article>
