@@ -1,0 +1,11 @@
+<p>books works!</p>
+<div>
+  <label>Name to search:</label>
+  <input type="text" title="title" #title (keyup)="searchBook(title.value)">
+  <span> {{errorMessage}}</span>
+</div>
+<div class="row">
+    <div class="col-sm-6 border border-4" *ngFor="let book of books">
+      <app-book-card [book]="book" (emitter)="deleteBook($event)"></app-book-card>
+    </div>
+</div>

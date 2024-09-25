@@ -1,0 +1,85 @@
+<div class="row bg-secondary p-2">
+    <div>
+      <figure class="col-md-3">
+        <img [src]="book.image_url ? 'data:image/png;base64,' +arrayBufferToBase64(book.image_url.data) : 'https://www.nordstudio.ch/wp/wp-content/uploads/2018/02/mitarbeiter-business-fotos_06.jpg'" height="150px" class="card-img" alt="book">
+        <button type="button" mat-medium-fab [routerLink]="['/editpic', book.id]" class="m-1" ><mat-icon >camera</mat-icon>
+          Edit Pic</button> 
+        <figcaption>
+          <b>#{{book.id}}</b>
+        </figcaption>
+      </figure>
+    </div>
+    <div class="col-md-6">
+        <ol class="list-group">
+          <li class="list-group-item"><small>title:</small><b>{{book.title}}</b></li>
+          <li class="list-group-item"><small>author:</small><b>{{book.author}}</b></li>
+          <li class="list-group-item"><small>price:₹</small><b>{{book.price}}</b></li>
+        </ol>
+        <div>
+          <button type="button" mat-mini-fab class="m-2" [routerLink]="['/editBook', book.id]">Edit</button>
+          <button type="button" class="btn btn-danger m-2" (click)="emitter.emit(book.id)"><mat-icon>delete</mat-icon></button>
+          
+        </div>
+    </div>
+</div>
+<!-- <mat-card class="row bg-secondary p-2">
+  <div class="col-md-4">
+    <mat-card-content>
+      <figure>
+        <img
+          mat-card-image
+          [src]="book.image_url ? 'data:image/png;base64,' + arrayBufferToBase64(book.image_url.data) : 'https://www.nordstudio.ch/wp/wp-content/uploads/2018/02/mitarbeiter-business-fotos_06.jpg'"
+          height="150px"
+          alt="book"
+        />
+        <button
+          mat-mini-fab
+          color="primary"
+          [routerLink]="['/editpic', book.id]"
+          class="m-1"
+        >
+          <mat-icon>camera</mat-icon> Edit Pic
+        </button>
+        <figcaption>
+          <b>#{{ book.id }}</b>
+        </figcaption>
+      </figure>
+    </mat-card-content>
+  </div>
+
+  <div class="col-md-8">
+    <mat-list>
+      <mat-list-item>
+        <span matListItemTitle>Title</span>
+        <span matListItemLine>{{ book.title }}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>Author</span>
+        <span matListItemLine>{{ book.author }}</span>
+      </mat-list-item>
+      <mat-list-item>
+        <span matListItemTitle>Price</span>
+        <span matListItemLine>₹{{ book.price }}</span>
+      </mat-list-item>
+    </mat-list>
+
+    <div>
+      <button
+        mat-raised-button
+        color="primary"
+        class="m-2"
+        [routerLink]="['/editBook', book.id]"
+      >
+        Edit
+      </button>
+      <button
+        mat-raised-button
+        color="warn"
+        class="m-2"
+        (click)="emitter.emit(book.id)"
+      >
+        <mat-icon>delete</mat-icon>
+      </button>
+    </div>
+  </div>
+</mat-card> -->

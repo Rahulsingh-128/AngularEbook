@@ -1,0 +1,9 @@
+<p>file-upload works!</p>
+<div class="m-4">
+  <p>
+    <b><span>Book Id:</span></b>
+  </p>
+  <label>Select Image: </label>
+  <input type="file" title="book_pic" (change)="getFile($event)">
+  <button type="button" (click)="upload()">Update Photo</button>
+</div>

@@ -1,0 +1,54 @@
+
+<!-- <div class="d-flex justify-content-center">
+  <form class="w-50 p-3 bg-info"  (submit)="collectData()">
+    <div class="mb-3">
+      <label for="username">USERNAME</label>
+      <input type="text"  id="id" placeholder="Enter username" formControlName="username"  />
+      <div class="text-danger text-end" *ngIf="username?.touched">
+        <div *ngIf="username?.hasError('required')">username is required</div>
+      </div>
+    </div>
+      <div class="mb-3">
+        <label for="password">password</label>
+        <input type="text"  id="password" placeholder="Enter password" [(ngModel)]= />
+        <div class="text-danger text-end" *ngIf="password?.touched">
+          <div *ngIf="password?.hasError('required')">title is required</div>
+          <div *ngIf="password?.hasError('minlength')">min 3 character is needed</div>
+          <div *ngIf="password?.hasError('maxlength')">max 10 character allowed</div>
+        </div>
+      </div>
+      
+    <button type="submit" class="btn btn-primary" >Submit</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+  </form>
+</div> -->
+
+<section>
+  <h4 class="text-center m-2">ADMIN LOGIN</h4>
+
+  <div class="d-flex justify-content-center">
+      <form class="w-50 p-3 bg-secondary"  #loginForm="ngForm" (submit)="collectData(loginForm)">
+          <div>
+              <small class="text-danger">{{errorMessage}}</small>
+          </div>
+          <div class="mb-3">
+              <label for="username" class="form-label">USERNAME</label>
+              <input type="text" class="form-control" title="username" name="username" 
+              [(ngModel)]="admin.username"  #username="ngModel" required>
+              <div class="text-danger text-end" *ngIf="username.touched">
+                  <div *ngIf="username.hasError('required')">Username is required</div>
+              </div>
+          </div>
+          <div class="mb-3">
+              <label for="password" class="form-label">PASSWORD</label>
+              <input type="password" class="form-control" title="password"  name="password" [(ngModel)]="admin.password"
+              #password="ngModel" required>
+              <div class="text-danger text-end" *ngIf="password.touched">
+                  <div *ngIf="password.hasError('required')">Password is required</div>
+              </div>
+          </div>
+          <button type="submit" class="m-2 btn btn-primary" mat-raised-button>LOGIN</button>
+          <button type="reset"  mat-flat-button>Reset</button>
+        </form>
+  </div>
+</section>

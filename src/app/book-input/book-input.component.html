@@ -1,0 +1,37 @@
+
+<div class="d-flex justify-content-center mt-3">
+  <form class="w-50 p-3 bg-info" [formGroup]="bookForm" (submit)="collectData()">
+    <div class="mb-3">
+      <label for="id">Id</label>
+      <input type="number" class="form-control" id="id" formControlName="id" readonly>
+      <div class="text-danger text-end" *ngIf="id?.touched">
+        <div *ngIf="id?.hasError('required')">Id is required</div>
+      </div>
+    </div>
+      <div class="mb-3">
+        <label for="title">title</label>
+        <input type="text" class="form-control" id="title" placeholder="Enter title" formControlName="title" (keyup)="test()">
+        <div class="text-danger text-end" *ngIf="title?.touched">
+          <div *ngIf="title?.hasError('required')">title is required</div>
+          <div *ngIf="title?.hasError('minlength')">min 3 character is needed</div>
+          <div *ngIf="title?.hasError('maxlength')">max 50 character allowed</div>
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="author">author</label>
+        <input type="text" class="form-control" id="author" placeholder="Enter author" formControlName="author">
+        <div class="text-danger text-end" *ngIf="author?.touched">
+          <div *ngIf="author?.hasError('required')">author is required</div>
+        </div>
+      </div>
+      <div>
+        <label for="price">price</label>
+        <input type="number" class="form-control" id="price" placeholder="Enter price" formControlName="price">
+        <div class="text-danger text-end" *ngIf="price?.touched">
+          <div *ngIf="price?.hasError('required')">price is required</div>
+        </div>
+      </div>
+    <button type="submit" class="btn btn-primary m-2" [disabled]="bookForm.invalid" >Submit</button>
+    <button type="reset" class="btn btn-secondary">Reset</button>
+  </form>
+</div>

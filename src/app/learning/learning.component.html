@@ -1,24 +1,128 @@
-<p>{{companyName}}</p>
-<h3>{{baseLocation}}</h3>
 <article>
+<h1>Learning</h1>
 <div>
-  <label for="bl">base location </label>
-  <input type="text" [(ngModel)]="baseLocation" id="bl" />
+  <h5>Counter from service</h5>
+  <h5>Counter from normal service</h5>
+  <p>{{counter3}}</p>
+  <h5>Counter from Store service</h5>
+  <p>{{counter3$ | async}}</p>
+  <button type="button" (click)="increment()">INCREMENT</button>
+  <button type="button" (click)="decrement()">Decrement</button>
 </div>
-
 <div>
-  <h2>Event Binding</h2>
-  <input type="checkbox" [(ngModel)]="checkStatus" id="showp" />
-  <label for="showp">show password</label>
   <div>
-    
-    {{checkStatus}}
+    <label for="location">Base Location :</label>
+    <input  type="text" [(ngModel)]="baseLocation" title="location" list="bl" />
+ </div>
+<div>
+  <h5 [ngClass]="styleClasses">2-way data binding</h5>
+  <label for="location">Base Location :</label>
+  <input  type="text" [(ngModel)]="baseLocation" title="location" />
+  <h5 [ngStyle]="styleObject" (mouseover)="changeStyle1()" (mouseleave)="changeStyle2()">Event binding</h5>
+</div>
+<div>
+  <h3>location</h3>
+  <datalist id="bl">
+    <option *ngFor="let location of companyOffices | orderby" [value]="location" >{{location}}</option> 
+  </datalist>
+  <div>
+    <label for="location"> Locations :</label>
+    <input  [(ngModel)]="baseLocation" title="location" list="bl" />
   </div>
 </div>
+  <section [ngSwitch]="baseLocation.toLowerCase()">
+    <address *ngSwitchCase="'rabale'">
+      <p>
+        Sigma IT Park, Unit No. 501, TTC Industrial Area, Rabale, Navi Mumbai, Maharashtra 400701
+      </p>
+    </address>
+    <address *ngSwitchCase="'dadar'">
+      <p>
+        The Ruby Tower, Senapati Bapat Marg, Dadar West, Mumbai, Maharashtra 400028
 
-<div>
-  <h2>Attribute Binding</h2>
-  <input [type]="inputType" id="password" />
-  <label for="password">Enter password:</label>
+      </p>
+    </address>
+    <address *ngSwitchCase="'parel'">
+      <p>
+        9th floor, Business arcade, Sayani Rd, Parel Bus Depot, Dighe Nagar, Prabhadevi, Mumbai, Maharashtra 400025
+      </p>
+    </address>
+    <address *ngSwitchDefault>
+      <p>
+        No Address Found
+      </p>
+    </address>
+  <div>
+    <ol>
+      <li *ngFor="let loc of companyOffices">
+         {{loc}}
+      </li>
+    </ol>
+  </div>
+  <table>
+    <thead>
+      <tr><th>Office Location</th></tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td *ngFor="let loc of companyOffices">
+        {{loc}}
+      </td>
+    </tr>
+  </tbody>
+  </table>
+  <table>
+    <thead>
+      <tr><th>Office Loc</th></tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let loc of companyOffices;let i=index;let even=even;let odd=odd">
+      <td>
+        {{loc}}
+      </td>
+      <td>{{loc | slice: 0:3  |lowercase}}</td>
+      <td>{{i}}</td>
+      <td>{{odd}}</td>
+    </tr>
+  </tbody>
+  </table>
+  <article>
+    <h3>Pipes</h3>
+    <table>
+      <thead>
+        <th colspan="3">Number</th>
+        <th colspan="3">Currency</th>
+      </thead>
+      <tbody>
+      <tr *ngFor="let salary of salaries">
+        <td>{{salary | number}}</td>
+        <td>{{salary | number:'.2'}}</td>
+        <td>{{salary | number:'6.1-1'}}</td>
+        <td>{{salary | currency : 'INR'}}</td>
+        <td>{{salary | currency : ' INR ' : 'code'}}</td>
+        <td>{{salary | currency : ' INR ' : 'symbol':'.3.-3'}}</td>
+      </tr>
+    </tbody>
+    </table>
+  </article>
+  <section class="d-flex flex-wrap justify-content-evenly">
+    <div *ngFor="let office of offices" class="border">
+      <h4>{{office.location}}</h4>
+      <address>
+        <p>{{office.address}}</p>
+      </address>
+    </div>
+  </section>
+  </section>
 </div>
+<!-- <div>
+  <h2>Time</h2>
+<table>
+  <tr><td>{{today}}</td></tr>
+  <tr><td>{{today | date}}</td></tr>
+  <tr><td>{{today date:"fullTime"}}</td></tr>
+  <tr><td>{{today | date:"long"}}</td></tr>
+  <tr><td>{{today}}</td></tr>
+</table>
+</div> -->
 </article>
